@@ -35,10 +35,15 @@ _Primary metric: total tokens processed (cache-invariant). Synthetic $ uses Opus
 | virgin | dispatch | 6 / 6 | 475 | 0 |
 | stack | dispatch | 6 / 6 | 411 | 0 |
 
-Both arms achieved **full fact coverage on every run** — no measurable quality gap. The
-stack's final answers are slightly terser (caveman output style) but that does not change
-correctness. (An automated hallucination probe fired symmetrically on both arms' dispatch
-answers → non-discriminating, treated as a false positive.)
+Both arms achieved full fact coverage on every run by the automated keyword check. Because a
+keyword check saturates (everyone scores 100%), a matched pair per task was also **read by
+hand**: both arms' answers are substantively correct and complete — they trace the real
+classes (`ServiceEngine`/`StdTickGroup`/`StdTickClient`; `DefaultSession.mainLoop`→
+`EnglishParser.findCommand`→`CMClass.commandWords`→`doCommand`→`execute`), both even more
+precisely than the rubric's own guess. If anything **virgin's ticker answer is marginally more
+comprehensive** (adds the watchdog/`checkHealth`, shutdown, suspend/resume). The stack's final
+answers are terser (caveman) but no less correct. Conclusion: **no quality gap — and the small
+edge, if any, is virgin's.**
 
 ## Headroom side-channel (`headroom perf`, 168h window, 666 reqs)
 
@@ -52,14 +57,26 @@ answers → non-discriminating, treated as a false positive.)
 ## Verdict
 
 **The user's observation is confirmed: on both tasks the stack consumes more and costs more,
-for identical answer quality.**
+for no better answer quality** (read-confirmed tie; virgin marginally richer on the ticker).
 
-| | ticker (focused) | dispatch (broad multi-hop) |
+| | ticker (focused — tight, robust) | dispatch (broad — high variance) |
 |---|--:|--:|
-| total tokens (stack ÷ virgin) | **1.61×** | **2.49×** |
-| cost, CC's own `total_cost_usd` | **1.59×** | **1.15×** |
-| median turns (virgin → stack) | 11 → 12 | 24 → 24 |
-| answer quality | tie (7/7) | tie (6/6) |
+| **cost — CC `total_cost_usd`, stack ÷ virgin (median)** | **1.59×** | **~1.15×** |
+| total tokens, stack ÷ virgin (median) | 1.61× | 2.49× |
+| per-run token range (virgin vs stack) | 371–486k vs 701–908k — **non-overlapping** | 201k–1.15M vs 1.36–1.75M — **non-overlapping** |
+| median turns (virgin → stack) | 11 → 12 | 24 → 24 (virgin spread 4–30) |
+| answer quality (read-confirmed) | tie | tie (virgin slightly richer) |
+
+**Lead on the ticker result** — it is the user's actual question and the tight, robust one:
+the stack's *best* run (701k tokens) still exceeds virgin's *worst* (486k). The cost headline
+is CC's own estimate (**1.59×**); the token ratio (1.61×) explains the mechanism but, on Max,
+is not what you pay.
+
+**Dispatch is directionally identical but noisier.** Virgin's three dispatch runs ranged
+201k–1.15M tokens (4–30 turns), so the 2.49× median could shift on a rerun. Even so the
+direction is solid — the ranges don't overlap (stack's *worst* dispatch run, 1.36M, beats
+virgin's *best*, 1.15M). By **cost** the dispatch gap is only ~1.15×, because the stack's token
+surplus is largely *cheap* `cache_read`, not new work.
 
 **Mechanism.** The stack pays a **1.81× fixed tax** every turn (85k vs 47k tokens of system
 prompt = MCP tool schemas + the forced-CBM-first global `CLAUDE.md`). That prefix is re-read

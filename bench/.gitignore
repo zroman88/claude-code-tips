@@ -1,0 +1,5 @@
+# Per-run artifacts are noise; keep the dir, ignore contents except the report.
+results/*
+!results/.gitkeep
+!results/report.md
+!results/summary.json

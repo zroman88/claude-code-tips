@@ -1,0 +1,217 @@
+{
+  "rateCard": {
+    "input": 15,
+    "output": 75,
+    "write1h": 30,
+    "write5m": 18.75,
+    "read": 1.5
+  },
+  "baseline": {
+    "virgin": 47114,
+    "stack": 85182
+  },
+  "groups": {
+    "virgin/baseline": {
+      "n": 1,
+      "medTotal": 47114,
+      "medInput": 1611,
+      "medOutput": 4,
+      "medCacheCreate": 7454,
+      "medCacheRead": 38045,
+      "medUsd": 0.3051525,
+      "medCcUsd": 0.07726999999999999,
+      "medTurns": 1,
+      "fixedTax": 47114,
+      "medWork": 0,
+      "runs": [
+        {
+          "tag": "virgin-baseline",
+          "total": 47114,
+          "turns": 1,
+          "cacheRead": 38045,
+          "usd": 0.3052,
+          "ccUsd": 0.07726999999999999
+        }
+      ]
+    },
+    "stack/baseline": {
+      "n": 1,
+      "medTotal": 85182,
+      "medInput": 15796,
+      "medOutput": 4,
+      "medCacheCreate": 0,
+      "medCacheRead": 69382,
+      "medUsd": 0.341313,
+      "medCcUsd": 0.11377100000000001,
+      "medTurns": 1,
+      "fixedTax": 85182,
+      "medWork": 0,
+      "runs": [
+        {
+          "tag": "stack-baseline",
+          "total": 85182,
+          "turns": 1,
+          "cacheRead": 69382,
+          "usd": 0.3413,
+          "ccUsd": 0.11377100000000001
+        }
+      ]
+    },
+    "virgin/ticker": {
+      "n": 3,
+      "medTotal": 460628,
+      "medInput": 1621,
+      "medOutput": 3212,
+      "medCacheCreate": 46389,
+      "medCacheRead": 384394,
+      "medUsd": 2.066976,
+      "medCcUsd": 0.51860325,
+      "medTurns": 11,
+      "fixedTax": 47114,
+      "medWork": 413514,
+      "runs": [
+        {
+          "tag": "virgin-ticker-1",
+          "total": 486342,
+          "turns": 12,
+          "cacheRead": 384394,
+          "usd": 3.7533,
+          "ccUsd": 0.890977
+        },
+        {
+          "tag": "virgin-ticker-2",
+          "total": 371117,
+          "turns": 7,
+          "cacheRead": 320844,
+          "usd": 2.067,
+          "ccUsd": 0.51860325
+        },
+        {
+          "tag": "virgin-ticker-3",
+          "total": 460628,
+          "turns": 11,
+          "cacheRead": 437443,
+          "usd": 1.5029,
+          "ccUsd": 0.43089774999999997
+        }
+      ]
+    },
+    "stack/ticker": {
+      "n": 3,
+      "medTotal": 740726,
+      "medInput": 16027,
+      "medOutput": 3915,
+      "medCacheCreate": 59336,
+      "medCacheRead": 670742,
+      "medUsd": 3.041403,
+      "medCcUsd": 0.8261435000000001,
+      "medTurns": 12,
+      "fixedTax": 85182,
+      "medWork": 655544,
+      "runs": [
+        {
+          "tag": "stack-ticker-1",
+          "total": 907833,
+          "turns": 12,
+          "cacheRead": 765268,
+          "usd": 5.3793,
+          "ccUsd": 1.3348327500000001
+        },
+        {
+          "tag": "stack-ticker-2",
+          "total": 740726,
+          "turns": 12,
+          "cacheRead": 670742,
+          "usd": 3.0414,
+          "ccUsd": 0.8261435000000001
+        },
+        {
+          "tag": "stack-ticker-3",
+          "total": 701006,
+          "turns": 10,
+          "cacheRead": 638741,
+          "usd": 2.7739,
+          "ccUsd": 0.7613654999999999
+        }
+      ]
+    },
+    "virgin/dispatch": {
+      "n": 3,
+      "medTotal": 597707,
+      "medInput": 1617,
+      "medOutput": 5153,
+      "medCacheCreate": 34350,
+      "medCacheRead": 532798,
+      "medUsd": 2.95801575,
+      "medCcUsd": 1.15909845,
+      "medTurns": 24,
+      "fixedTax": 47114,
+      "medWork": 550593,
+      "runs": [
+        {
+          "tag": "virgin-dispatch-1",
+          "total": 201408,
+          "turns": 4,
+          "cacheRead": 178805,
+          "usd": 1.0713,
+          "ccUsd": 1.15909845
+        },
+        {
+          "tag": "virgin-dispatch-2",
+          "total": 1151391,
+          "turns": 30,
+          "cacheRead": 1107919,
+          "usd": 3.2544,
+          "ccUsd": 0.959842
+        },
+        {
+          "tag": "virgin-dispatch-3",
+          "total": 597707,
+          "turns": 24,
+          "cacheRead": 532798,
+          "usd": 2.958,
+          "ccUsd": 1.3302725000000002
+        }
+      ]
+    },
+    "stack/dispatch": {
+      "n": 3,
+      "medTotal": 1491207,
+      "medInput": 16170,
+      "medOutput": 7900,
+      "medCacheCreate": 68017,
+      "medCacheRead": 1410418,
+      "medUsd": 4.751457,
+      "medCcUsd": 1.33805275,
+      "medTurns": 24,
+      "fixedTax": 85182,
+      "medWork": 1406025,
+      "runs": [
+        {
+          "tag": "stack-dispatch-1",
+          "total": 1491207,
+          "turns": 26,
+          "cacheRead": 1410418,
+          "usd": 4.6522,
+          "ccUsd": 1.33805275
+        },
+        {
+          "tag": "stack-dispatch-2",
+          "total": 1359871,
+          "turns": 20,
+          "cacheRead": 1268138,
+          "usd": 4.7515,
+          "ccUsd": 1.32875525
+        },
+        {
+          "tag": "stack-dispatch-3",
+          "total": 1748263,
+          "turns": 24,
+          "cacheRead": 1644765,
+          "usd": 5.7599,
+          "ccUsd": 1.6283525
+        }
+      ]
+    }
+  }
+}
